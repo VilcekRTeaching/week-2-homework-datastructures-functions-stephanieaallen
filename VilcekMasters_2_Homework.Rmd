@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+nyc <- read.csv("https://raw.githubusercontent.com/fredlapolla/RVilcekMaster23/master/NYC_HANES_DIAB.csv")
 ```
 
 
@@ -91,7 +92,7 @@ class(nyc$DX_DBTS)
 >- Provide the same command the type of data but use the other way of indexing from what you did above. 
 
 ```{r}
-#which(colnames(nyc) == "DX_DBTS")
+which(colnames(nyc) == "DX_DBTS")
 #used above to find out which column DX_DBTS was-> it is 10
 class(nyc[,10])
 ```
@@ -102,6 +103,8 @@ class(nyc[,10])
 
 ```{r}
 #making matrix
+nyc[,1:4]
+#class of matrix
 class(nyc[,1:4])
 #It would be a data frame. This is, becuase it has multiple columns with different types of data. 
 ```
@@ -153,7 +156,8 @@ apply(nyc[, c("CADMIUM", "LEAD", "CHOLESTEROLTOTAL", "GLUCOSESI", "CREATININESI"
 
 ```{r}
 
-sapply(nyc[, c("CADMIUM", "LEAD", "CHOLESTEROLTOTAL", "GLUCOSESI", "CREATININESI", "CREATININE")], na.rm= TRUE, FUN = median, MARGIN = 2)
+sapply(nyc[, c("CADMIUM", "LEAD", "CHOLESTEROLTOTAL", "GLUCOSESI", "CREATININESI", "CREATININE")], na.rm= TRUE, FUN = median)
+#sapply runs on columns so don’t need to specify margin as columns
 
 ```
 
